@@ -1,0 +1,40 @@
+
+The query is: resize
+The query is: keyset
+
+The query is: size
+Size of the table is: 1
+
+The query is: put 123 a
+39: 123 a
+
+The query is: put 123 b
+39: 123 b
+
+The query is: put 132 c
+8: 132 c
+39: 123 b
+
+The query is: remove 123
+8: 132 c
+
+The query is: keyset
+132
+
+The query is: remove 123
+8: 132 c
+
+The query is: remove 132
+
+The query is: put Ankara16 Center of Turkey
+51: Ankara16 Center of Turkey
+
+The query is: put 201ADF3v ID
+22: 201ADF3v ID
+51: Ankara16 Center of Turkey
+
+The query is: size
+Size of the table is: 3
+
+The query is: containsKey 12334
+false
