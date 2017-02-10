@@ -1,2 +1,2 @@
 # HashMap
-HashMap implementation project of Koc University Comp202 Data Structures and Algorithms
+HashMap implementation project Comp202 Data Structures and Algorithms Course
