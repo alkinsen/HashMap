@@ -12,6 +12,7 @@ public class Hashmap {
 		this.size = 0;
 		this.entries = new Entry[this.arraySize];
 	}
+	
 	public int hash(String key){ //hash function -> provided by the question
 		int hash = 0;
 		int p=23; 
@@ -21,12 +22,15 @@ public class Hashmap {
 		return hash;
 
 	}
+	
 	public int arraySize(){ //size() will return the size of the entries array
 		return this.arraySize;
 	}
+	
 	public int size(){//load will return how many entries are added to the hashmap
 		return this.size;
 	}
+	
 	public void put(String key, String value){ // Put(.. , ..) will add a key-value pair to it's corresponding hash-key.
 		remove(key); 							//Tries to removes the key, 
 		Entry newEntry = new Entry(key, value);// If it is full, it will link it to the last entry
@@ -45,6 +49,7 @@ public class Hashmap {
 
 		size++;
 	}
+	
 	public void remove(String key){ //Removes the Entry with the given key
 		int hashindex = hash(key);
 		Entry current = entries[hashindex];
@@ -78,6 +83,7 @@ public class Hashmap {
 		}
 		
 	}
+	
 	public boolean constainsKey(String key){ //checks if the there is an entry with the given key.
 		int hashindex = hash(key);
 		Entry current = entries[hashindex];
@@ -87,6 +93,7 @@ public class Hashmap {
 		}
 		return false;
 	}
+	
 	public IterableHashmap keySet(){ //returns an iterator with next and hasNext methods with the keySet
 		IterableHashmap keySet = new IterableHashmap(this);
 		for(int i = 0; i < this.arraySize; i++){
@@ -107,12 +114,14 @@ public class Hashmap {
 		return keySet;
 
 	}
+	
 	public void Empty(){ //Clears the array
 		for(int i = 0; i < entries.length; i++){
 			entries[i] = null;
 		}
 		size = 0;
 	}
+	
 	public void printHashmap(){ //Prints hashmap to console
 		System.out.println("------------Printing the hashmap-----------");
 		for(int i = 0; i < this.arraySize; i++){
@@ -128,6 +137,7 @@ public class Hashmap {
 			}
 		}
 	}
+	
 	public String toStringHashmap(){ //Returns the elements of hashmap as a string.
 		String result = "";
 		for(int i = 0; i < this.arraySize; i++){
@@ -152,12 +162,10 @@ public class Hashmap {
 
 		try {
 			BufferedReader bufferedReaderInput = new BufferedReader(new FileReader(fileNameInput)); 
-
 			BufferedWriter write = new BufferedWriter(new FileWriter(outputFile)); //Clears the text File.
 			write.flush();
 			write.close();
-
-
+			
 			BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile, true)); //True argument gives the append to the FileWriter.
 
 			Hashmap hashmap = new Hashmap(53);
@@ -189,12 +197,9 @@ public class Hashmap {
 
 				}else if(linesplit[0].equalsIgnoreCase("remove")){
 					hashmap.remove(linesplit[1]);
-					
-					hashmap.printHashmap();
-					
+					hashmap.printHashmap();			
 					writer.write(hashmap.toStringHashmap() + "\r\n");
 					
-
 				}else if(linesplit[0].equalsIgnoreCase("size")){
 					System.out.println("Size of the table is: " + hashmap.size());
 
@@ -206,8 +211,7 @@ public class Hashmap {
 					writer.write(hashmap.constainsKey(linesplit[1])+ "\r\n");
 				
 				}else if(linesplit[0].equalsIgnoreCase("keyset")){
-					IterableHashmap iterator = hashmap.keySet();
-					
+					IterableHashmap iterator = hashmap.keySet();				
 					
 					while(iterator.hasNext()){
 						String key = iterator.nextString();
@@ -217,40 +221,14 @@ public class Hashmap {
 					writer.write("\r\n");
 				}
 				line = bufferedReaderInput.readLine();
-			} 
-			
-			
-			
-			
+			} 			
 			bufferedReaderInput.close();
 			writer.flush();
 			writer.close();
-			
-			
-
-			
 
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-
-
-
 	}
 }
 
-
-
-
-//public void reSize(){ 
-//IterableHashmap iterator = keySet(); 
-//arraySize = arraySize*2;
-//size = 0;
-//entries = new Entry[arraySize];
-//Entry current;
-//while(iterator.hasNext()){
-//	current = iterator.nextEntry();
-//	put(current.getKey(), current.getValue());
-//}
-//}
-//
